@@ -1,0 +1,4 @@
+select  category, to_char(order_date,'Mon-YY') as year_month, sum(sales) 
+from orders
+group by year_month, category 
+order by year_month

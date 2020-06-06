@@ -1,0 +1,2 @@
+select sum(sales) as Total_Sales
+from orders

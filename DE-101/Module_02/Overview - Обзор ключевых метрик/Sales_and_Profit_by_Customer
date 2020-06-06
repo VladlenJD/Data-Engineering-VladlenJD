@@ -1,0 +1,4 @@
+select customer_id, customer_name, sum(sales), (sum(profit)/sum(sales)*100) as profit
+from orders
+group by customer_id, customer_name
+order by customer_name 

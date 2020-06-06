@@ -1,0 +1,2 @@
+select avg(discount)*100 as Avg_Discount_Percent
+from orders

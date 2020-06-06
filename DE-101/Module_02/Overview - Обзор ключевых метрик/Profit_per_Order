@@ -1,0 +1,2 @@
+select profit/sales*100 as Profit_per_Order
+from orders

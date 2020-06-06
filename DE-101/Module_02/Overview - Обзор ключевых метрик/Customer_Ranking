@@ -1,0 +1,4 @@
+select customer_id, customer_name, sum(sales)
+from orders 
+group by customer_id, customer_name
+order by sum(sales) desc

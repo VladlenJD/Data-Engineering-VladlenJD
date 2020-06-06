@@ -1,0 +1,2 @@
+select sum(profit) as Total_Profit
+from orders

@@ -1,0 +1,2 @@
+select (sum(profit)/sum(sales))*100 as Profit_Ratio_Percent
+from orders

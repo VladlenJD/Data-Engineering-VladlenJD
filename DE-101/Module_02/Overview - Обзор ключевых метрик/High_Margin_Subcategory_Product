@@ -1,0 +1,4 @@
+select subcategory, sum(profit)/sum(sales)*100 as profit
+from orders
+group by subcategory 
+order by profit desc
