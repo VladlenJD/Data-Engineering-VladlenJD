@@ -1,0 +1,17 @@
+CREATE TABLE "geografy"
+(
+ "geo_id"      serial NOT NULL,
+ "Country"     varchar(30) NOT NULL,
+ "Region"      varchar(10) NOT NULL,
+ "State"       varchar(20) NOT NULL,
+ "City"        varchar(20) NOT NULL,
+ "Postal_code" int4range NOT NULL,
+ CONSTRAINT "PK_Geografy" PRIMARY KEY ( "geo_id" )
+);
+
+
+
+
+
+
+

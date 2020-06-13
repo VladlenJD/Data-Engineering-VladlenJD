@@ -1,0 +1,13 @@
+CREATE TABLE "shipping"
+(
+ "ship_id"   integer NOT NULL,
+ "ship_mode" varchar(25) NOT NULL,
+ CONSTRAINT "PK_shipping" PRIMARY KEY ( "ship_id" )
+);
+
+
+
+
+
+
+

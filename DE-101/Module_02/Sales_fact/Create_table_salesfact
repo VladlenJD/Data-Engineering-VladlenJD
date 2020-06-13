@@ -1,0 +1,47 @@
+CREATE TABLE "sales_fact"
+(
+ "raw_id"     int4range NOT NULL,
+ "order_id"   varchar(14) NOT NULL,
+ "sales"      numeric(9,4) NOT NULL,
+ "quantity"   int4range NOT NULL,
+ "discount"   numeric(4,2) NOT NULL,
+ "profit"     numeric(21,16) NOT NULL,
+ "geo_id"     integer NOT NULL,
+ "ship_id"    integer NOT NULL,
+ "order_date" date NOT NULL,
+ "ship_date"  date NOT NULL,
+ "product_id" integer NOT NULL,
+ CONSTRAINT "PK_sales_fact" PRIMARY KEY ( "raw_id" ),
+ CONSTRAINT "FK_24" FOREIGN KEY ( "geo_id" ) REFERENCES "geografy" ( "geo_id" ),
+ CONSTRAINT "FK_31" FOREIGN KEY ( "ship_id" ) REFERENCES "shipping" ( "ship_id" ),
+ CONSTRAINT "FK_43" FOREIGN KEY ( "order_date", "ship_date" ) REFERENCES "calendar" ( "order_date", "ship_date" ),
+ CONSTRAINT "FK_54" FOREIGN KEY ( "product_id" ) REFERENCES "products" ( "product_id" )
+);
+
+CREATE INDEX "fkIdx_24" ON "sales_fact"
+(
+ "geo_id"
+);
+
+CREATE INDEX "fkIdx_31" ON "sales_fact"
+(
+ "ship_id"
+);
+
+CREATE INDEX "fkIdx_43" ON "sales_fact"
+(
+ "order_date",
+ "ship_date"
+);
+
+CREATE INDEX "fkIdx_54" ON "sales_fact"
+(
+ "product_id"
+);
+
+
+
+
+
+
+
