@@ -1,0 +1,16 @@
+insert into calendar 
+select row_number () over(), order_date, ship_date, "year", "quarter", "month", "week", "week_day"
+from (select distinct 
+             order_date, 
+             ship_date,
+             extract (year from order_date) as "year",
+             extract (quarter from order_date) as "quarter",
+             extract (month from order_date) as "month",
+             extract (week from order_date) as "week",
+             extract (dow from order_date) as "week_day"
+             from orders 
+            ) x;
+
+
+
+update calendar set week_day = '...' where week_day = '...'

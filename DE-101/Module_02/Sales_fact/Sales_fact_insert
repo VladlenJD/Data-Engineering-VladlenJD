@@ -1,0 +1,31 @@
+insert into sales_fact
+select row_number () over(),
+       order_id,
+       sales,
+       quantity,
+       discount,
+       profit,
+       geo_id,
+       ship_id,       
+       p_id,
+       date_id
+from (select  
+             o.order_id,
+             o.sales,
+             o.quantity,
+             o.discount,
+             o.profit,
+             g.geo_id,
+             s.ship_id,             
+             p.p_id,
+             c.date_id
+      from orders o
+          inner join
+               geografy g on o.postal_code = g.postal_code and o.country = g.country and o.city = g.city and o.state = g.state 
+          inner join 
+               shipping s on o.ship_mode = s.ship_mode 
+          inner join 
+               products p on o.product_id = p.product_id and o.product_name = p.product_name and o.segment = p.segment and o.category = p.category and o.subcategory = p.subcategory 
+          inner join    
+               calendar c on o.order_date = c.order_date and o.ship_date = c.ship_date 
+              ) x;

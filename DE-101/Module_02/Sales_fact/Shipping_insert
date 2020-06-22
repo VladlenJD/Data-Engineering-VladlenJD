@@ -1,0 +1,2 @@
+insert into shipping 
+select 100+row_number () over(), ship_mode from (select distinct ship_mode from orders ) z;

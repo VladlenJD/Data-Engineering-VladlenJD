@@ -1,13 +1,14 @@
 CREATE TABLE "calendar"
 (
+ "date_id" int4 NOT NULL,
  "order_date" date NOT NULL,
  "ship_date"  date NOT NULL,
- "year"       int4range NOT NULL,
+ "year"       double precision NOT NULL,
  "quarter"    varchar(5) NOT NULL,
- "month"      int4range NOT NULL,
- "week"       int4range NOT NULL,
- "week_day"   int4range NOT NULL,
- CONSTRAINT "PK_calendar" PRIMARY KEY ( "order_date", "ship_date" )
+ "month"      double precision NOT NULL,
+ "week"       double precision NOT NULL,
+ "week_day"   double precision NOT NULL,
+ CONSTRAINT "PK_calendar" PRIMARY KEY ( "date_id", "order_date", "ship_date" )
 );
 
 

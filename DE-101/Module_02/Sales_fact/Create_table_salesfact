@@ -1,9 +1,9 @@
 CREATE TABLE "sales_fact"
 (
- "raw_id"     int4range NOT NULL,
+ "raw_id"     varchar NOT NULL,
  "order_id"   varchar(14) NOT NULL,
  "sales"      numeric(9,4) NOT NULL,
- "quantity"   int4range NOT NULL,
+ "quantity"   integer NOT NULL,
  "discount"   numeric(4,2) NOT NULL,
  "profit"     numeric(21,16) NOT NULL,
  "geo_id"     integer NOT NULL,
@@ -11,10 +11,11 @@ CREATE TABLE "sales_fact"
  "order_date" date NOT NULL,
  "ship_date"  date NOT NULL,
  "product_id" integer NOT NULL,
+ "date_id"    int4 NOT NULL,
  CONSTRAINT "PK_sales_fact" PRIMARY KEY ( "raw_id" ),
  CONSTRAINT "FK_24" FOREIGN KEY ( "geo_id" ) REFERENCES "geografy" ( "geo_id" ),
  CONSTRAINT "FK_31" FOREIGN KEY ( "ship_id" ) REFERENCES "shipping" ( "ship_id" ),
- CONSTRAINT "FK_43" FOREIGN KEY ( "order_date", "ship_date" ) REFERENCES "calendar" ( "order_date", "ship_date" ),
+ CONSTRAINT "FK_43" FOREIGN KEY ( "date_id", "order_date", "ship_date" ) REFERENCES "calendar" ("date_id", "order_date", "ship_date" ),
  CONSTRAINT "FK_54" FOREIGN KEY ( "product_id" ) REFERENCES "products" ( "product_id" )
 );
 
@@ -30,6 +31,7 @@ CREATE INDEX "fkIdx_31" ON "sales_fact"
 
 CREATE INDEX "fkIdx_43" ON "sales_fact"
 (
+ "date_id",
  "order_date",
  "ship_date"
 );
